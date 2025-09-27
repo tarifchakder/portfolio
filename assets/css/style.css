@@ -515,13 +515,13 @@ main {
 
 .navbar {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     background: hsla(240, 1%, 17%, 0.75);
     backdrop-filter: blur(10px);
     border: 1px solid var(--jet);
-    border-radius: 12px 12px 0 0;
+    border-radius: 0 0 12px 12px;
     box-shadow: var(--shadow-2);
     z-index: 5;
     -webkit-tap-highlight-color: transparent;
@@ -1491,8 +1491,7 @@ textarea.form-input::-webkit-resizer {
 @media (max-width: 440px) {
 
     main {
-        padding-top: 30px;
-        padding-bottom: 100px;
+        padding-top: 100px;
     }
 
     /**
@@ -1527,8 +1526,7 @@ textarea.form-input::-webkit-resizer {
 @media (min-width: 450px) {
 
     main {
-        padding-top: 30px;
-        padding-bottom: 100px;
+        padding-top: 100px;
     }
 
     /**
@@ -1586,6 +1584,9 @@ textarea.form-input::-webkit-resizer {
 
     }
 
+    main {
+        padding-top: 100px;
+    }
 
     /**
      * #REUSED STYLE
@@ -1617,12 +1618,6 @@ textarea.form-input::-webkit-resizer {
     /**
      * #MAIN
      */
-    main {
-        padding-top: 40px;
-        padding-bottom: 100px;
-    }
-
-
     /**
      * #SIDEBAR
      */
@@ -1889,12 +1884,14 @@ textarea.form-input::-webkit-resizer {
     }
 }
 
-
 /**
  * responsive larger than 768px screen
  */
-
 @media (min-width: 768px) {
+
+    main {
+        padding-top: 100px;
+    }
 
     /**
      * REUSED STYLE
@@ -1993,7 +1990,6 @@ textarea.form-input::-webkit-resizer {
 
 }
 
-
 /**
  * responsive larger than 1024px screen
  */
@@ -2015,6 +2011,10 @@ textarea.form-input::-webkit-resizer {
 
     }
 
+    main {
+        padding-top: 40px;
+    }
+
 
     /**
      * REUSED STYLE
@@ -2028,10 +2028,6 @@ textarea.form-input::-webkit-resizer {
     /**
      * MAIN
      */
-    main {
-        padding-bottom: 40px;
-    }
-
     .main-content {
         position: relative;
         width: max-content;
@@ -2152,6 +2148,10 @@ textarea.form-input::-webkit-resizer {
      * MAIN
      */
     main {
+        padding-top: 40px;
+    }
+
+    main {
         max-width: 1200px;
         margin-inline: auto;
         display: flex;
@@ -2205,7 +2205,7 @@ textarea.form-input::-webkit-resizer {
     }
 
     .cv_btn {
-        padding: 12px 32px;
+        padding: 5px 15px;
         border-radius: 40px;
         font-size: 1rem;
     }
