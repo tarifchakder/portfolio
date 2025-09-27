@@ -6,6 +6,7 @@ import './index.css';
 
 // Register the Intersection Observer polyfill for older browsers
 import 'intersection-observer';
+import {HashRouter} from "react-router-dom";
 
 // Create a root for the application
 const container = document.getElementById('root');
@@ -16,7 +17,9 @@ const root = createRoot(container);
 
 // Render the application
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </React.StrictMode>
 );
