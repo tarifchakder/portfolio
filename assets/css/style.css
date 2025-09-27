@@ -158,10 +158,16 @@ input, textarea {
 
 html {
     font-family: var(--ff-primary), sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
 }
 
 body {
     background: var(--smoky-black);
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
 }
 
 
@@ -509,7 +515,7 @@ main {
 
 .navbar {
     position: fixed;
-    bottom: env(safe-area-inset-bottom);
+    bottom: 0;
     left: 0;
     width: 100%;
     background: hsla(240, 1%, 17%, 0.75);
