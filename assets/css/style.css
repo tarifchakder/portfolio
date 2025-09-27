@@ -509,7 +509,7 @@ main {
 
 .navbar {
     position: fixed;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom);
     left: 0;
     width: 100%;
     background: hsla(240, 1%, 17%, 0.75);
@@ -1485,6 +1485,7 @@ textarea.form-input::-webkit-resizer {
 @media (max-width: 440px) {
 
     main {
+        padding-top: 30px;
         padding-bottom: 100px;
     }
 
@@ -1520,6 +1521,7 @@ textarea.form-input::-webkit-resizer {
 @media (min-width: 450px) {
 
     main {
+        padding-top: 30px;
         padding-bottom: 100px;
     }
 
