@@ -1482,7 +1482,7 @@ textarea.form-input::-webkit-resizer {
 /**
  * responsive larger than 450px screen
  */
-@media (max-width: 350px) {
+@media (max-width: 440px) {
 
     main {
         padding-bottom: 100px;
