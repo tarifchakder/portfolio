@@ -147,3 +147,30 @@ function changeTitle() {
 
 // Initial call and set interval
 setInterval(changeTitle, 5000);
+
+
+
+// Pop up dialog
+const comingButtons = document.querySelectorAll(".comingSoonBtn");
+const popup = document.getElementById("comingSoonPopup");
+const closePopup = document.getElementById("closePopup");
+
+// Handle click for all coming soon buttons
+comingButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault(); // ⛔ prevent <a> from navigating
+        popup.style.display = "flex";
+    });
+});
+
+// Close popup
+closePopup.addEventListener("click", () => {
+    popup.style.display = "none";
+});
+
+// Close popup if clicked outside content
+window.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popup.style.display = "none";
+    }
+});
