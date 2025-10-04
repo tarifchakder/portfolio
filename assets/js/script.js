@@ -6,7 +6,6 @@
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 
-
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
@@ -73,7 +72,6 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 
-
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
@@ -102,6 +100,10 @@ const pages = document.querySelectorAll("[data-page]");
 navigationLinks.forEach((link) => {
     link.addEventListener("click", function () {
         const targetPage = link.textContent.trim().toLowerCase();
+        if (targetPage === "blog") {
+            window.open("https://blog.tarifchakder.com/", "_blank");
+            return;
+        }
 
         // Toggle pages
         pages.forEach((page) => {
