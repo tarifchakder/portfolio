@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tarifchakder:material-theme-iosarm64:1.1.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="com.tarifchakder" artifactId="material-theme-iosarm64" version="1.1.0" baseVersion="1.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tarifchakder/material-theme-iosarm64/1.1.0/2fe484a8735089f445f0502b8615292c1071cb7f/material-theme-kit.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tarifchakder/material-theme-iosarm64/1.1.0/2b916c74f430af5273f0e67f2ce44dceeb18280d/material-theme-kit-iosarm64-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
