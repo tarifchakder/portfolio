@@ -1,8 +1,0 @@
-/Users/tarif/workspace/portfolio/composeApp/src/commonMain/kotlin/com/tarifchakder/portfolio/domain/Constant.kt
-/Users/tarif/workspace/portfolio/composeApp/src/commonMain/kotlin/com/tarifchakder/portfolio/App.kt
-/Users/tarif/workspace/portfolio/composeApp/src/commonMain/kotlin/com/tarifchakder/portfolio/domain/WindowSizeClass.kt
-/Users/tarif/workspace/portfolio/composeApp/build/generated/compose/resourceGenerator/kotlin/wasmJsMainResourceCollectors/portfolio/composeapp/generated/resources/ActualResourceCollectors.kt
-/Users/tarif/workspace/portfolio/composeApp/src/commonMain/kotlin/com/tarifchakder/portfolio/theme/AppTypography.kt
-/Users/tarif/workspace/portfolio/composeApp/build/generated/compose/resourceGenerator/kotlin/commonResClass/portfolio/composeapp/generated/resources/Res.kt
-/Users/tarif/workspace/portfolio/composeApp/src/webMain/kotlin/com/tarifchakder/portfolio/main.kt
-/Users/tarif/workspace/portfolio/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors/portfolio/composeapp/generated/resources/ExpectResourceCollectors.kt
