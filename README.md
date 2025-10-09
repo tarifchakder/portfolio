@@ -1,76 +1,107 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM).
+# Tarif Chakder — Portfolio (Kotlin Multiplatform)
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+A personal portfolio application built with Kotlin Multiplatform and Compose Multiplatform, targeting:
+- Android
+- iOS
+- Desktop (JVM)
+- Web (JS)
+- WebAssembly (Wasm)
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+Single codebase, native UI with Compose across platforms.
 
-### Build and Run Android Application
+## Tech stack
+- Kotlin Multiplatform
+- JetBrains Compose Multiplatform (Material 3)
+- Android, iOS (Xcode entry app), Desktop (JVM), Web (JS), Wasm
+- Gradle Kotlin DSL
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
+## Project structure
+- composeApp/src/commonMain — shared UI and logic (e.g., App.kt, Greeting.kt)
+- composeApp/src/androidMain — Android-specific code and resources
+- composeApp/src/iosMain — iOS framework bindings used by the Xcode app
+- composeApp/src/jvmMain — Desktop (JVM) entry point
+- composeApp/src/jsMain — Web (JS) target
+- composeApp/src/wasmJsMain — WebAssembly (Wasm) target
+- composeApp/src/webMain — Static web resources (index.html, styles.css)
+- iosApp — Xcode project that embeds the shared KMP framework
+
+## Prerequisites
+- Android Studio (or IntelliJ IDEA) with Kotlin/Compose support
+- JDK 17 or 11 installed (project compiles with Java 11 target)
+- Android SDK for Android builds
+- Xcode (15+) for iOS builds
+- Recent Chrome/Safari/Firefox for Web/Wasm
+
+## Build and run
+
+### Android
+Use IDE run configuration or build from terminal:
+- macOS/Linux:
+  ```bash
   ./gradlew :composeApp:assembleDebug
   ```
-- on Windows
-  ```shell
+- Windows:
+  ```bash
   .\gradlew.bat :composeApp:assembleDebug
   ```
+To install on a connected device/emulator:
+- macOS/Linux: `./gradlew :composeApp:installDebug`
+- Windows: `.\gradlew.bat :composeApp:installDebug`
 
-### Build and Run Desktop (JVM) Application
-
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
+### Desktop (JVM)
+Run directly:
+- macOS/Linux:
+  ```bash
   ./gradlew :composeApp:run
   ```
-- on Windows
-  ```shell
+- Windows:
+  ```bash
   .\gradlew.bat :composeApp:run
   ```
 
-### Build and Run Web Application
-
-To build and run the development version of the web app, use the run configuration from the run widget
-in your IDE's toolbar or run it directly from the terminal:
-- for the Wasm target (faster, modern browsers):
-  - on macOS/Linux
-    ```shell
+### Web
+Development servers:
+- Wasm (faster; modern browsers):
+  - macOS/Linux:
+    ```bash
     ./gradlew :composeApp:wasmJsBrowserDevelopmentRun
     ```
-  - on Windows
-    ```shell
+  - Windows:
+    ```bash
     .\gradlew.bat :composeApp:wasmJsBrowserDevelopmentRun
     ```
-- for the JS target (slower, supports older browsers):
-  - on macOS/Linux
-    ```shell
+- JS (older browser support):
+  - macOS/Linux:
+    ```bash
     ./gradlew :composeApp:jsBrowserDevelopmentRun
     ```
-  - on Windows
-    ```shell
+  - Windows:
+    ```bash
     .\gradlew.bat :composeApp:jsBrowserDevelopmentRun
     ```
+Production distributions (output in build dirs):
+- Wasm: `./gradlew :composeApp:wasmJsBrowserDistribution`
+- JS: `./gradlew :composeApp:jsBrowserDistribution`
 
-### Build and Run iOS Application
+### iOS
+Open the Xcode project and run on a simulator or device:
+- Path: [iosApp/iosApp.xcodeproj](./iosApp/iosApp.xcodeproj)
+- The shared KMP framework is produced by the Gradle iOS targets (iosArm64/iosSimulatorArm64).
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Package desktop installers (optional)
+Compose Desktop native distributions are configured. To build for your OS:
+```bash
+./gradlew :composeApp:createDistributable
+```
+See compose.desktop config in composeApp/build.gradle.kts for formats.
 
----
+## App ID and package
+- Android applicationId: `com.tarifchakder`
+- Common package: `com.tarifchakder`
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+## Notes
+- This project uses Compose hot reload in supported IDEs.
+- Web resources live in composeApp/src/webMain/resources.
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
+## License
+No license specified.
