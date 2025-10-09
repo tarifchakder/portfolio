@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bc076126-0a58-4e6b-b13d-48dcced27f48" name="Changes" comment="add platform-specific vector drawables&#10;&#10;Adds multiple vector drawable resources for the Compose app, including icons for Android, Firebase, Email, Hamburger menu, GitHub, Dark/Light themes, Java, LinkedIn, and Instagram. These resources enhance UI visuals across platforms.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors/portfolio/composeapp/generated/resources/Drawable0.commonMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors/portfolio/composeapp/generated/resources/Drawable0.commonMain.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/tarif/.android/avd/Medium_Phone.avd)]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="portfolio" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tarifchakder&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/tarifchakder/portfolio.git",
+    "accountId": "719972d8-0d69-4d52-8ccc-e9a19e949bc6"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="33GdhRmnuK244wr0BA1wyA2erRC" />
+  <component name="ProjectReloadState">
+    <option name="STATE" value="1" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.composeApp.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.composeApp [jvm].executor": "Run",
+    "Gradle.composeApp [wasmJs].executor": "Run",
+    "Gradle.portfolio [generateResourceAccessorsForCommonMain].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "feature/v2",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/tarif/workspace/portfolio/composeApp/src/commonMain/composeResources/font",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "ml.llm.AIAssistantPromptsLibrary",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/tarif/workspace/portfolio/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/composeApp/src/commonMain/composeResources/font" />
+      <recent name="$PROJECT_DIR$/composeApp/src/commonMain/composeResources/drawable" />
+      <recent name="$PROJECT_DIR$/composeApp/src/commonMain/kotlin/com/tarifchakder/portfolio" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.tarifchakder.portfolio.domain" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.composeApp [wasmJs]">
+    <configuration name="composeApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="portfolio.composeApp" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="iosApp" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="iosApp" TARGET_NAME="iosApp" CONFIG_NAME="Debug" IS_LOCATION_SIMULATION_SUPPORTED="true" SCHEME_NAME="iosApp" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" DEVELOPMENT_TEAM="${TEAM_ID}" RUN_TARGET_PROJECT_NAME="iosApp" RUN_TARGET_NAME="iosApp" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+      <embedded_app_extension_list />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="composeApp [js]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/composeApp" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jsBrowserDevelopmentRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="composeApp [jvm]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/composeApp" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-DmainClass=com.tarifchakder.portfolio.MainKt --quiet" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jvmRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="composeApp [wasmJs]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/composeApp" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="wasmJsBrowserDevelopmentRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.composeApp" />
+      <item itemvalue="Gradle.composeApp [js]" />
+      <item itemvalue="Gradle.composeApp [jvm]" />
+      <item itemvalue="Gradle.composeApp [wasmJs]" />
+      <item itemvalue="Xcode Application.iosApp" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc076126-0a58-4e6b-b13d-48dcced27f48" name="Changes" comment="" />
+      <created>1758947462170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758947462170</updated>
+      <workItem from="1758947463293" duration="25855000" />
+      <workItem from="1759601050308" duration="1621000" />
+      <workItem from="1759603401694" duration="358000" />
+      <workItem from="1759605783656" duration="1415000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758948610367</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758948610367</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758948737499</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758948737499</updated>
+    </task>
+    <task id="LOCAL-00003" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758948832793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758948832793</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758949024679</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758949024679</updated>
+    </task>
+    <task id="LOCAL-00005" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758949407926</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758949407926</updated>
+    </task>
+    <task id="LOCAL-00006" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758949503878</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758949503878</updated>
+    </task>
+    <task id="LOCAL-00007" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758951133964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758951133964</updated>
+    </task>
+    <task id="LOCAL-00008" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758951186012</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758951186012</updated>
+    </task>
+    <task id="LOCAL-00009" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758951991663</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1758951991663</updated>
+    </task>
+    <task id="LOCAL-00010" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758952406390</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1758952406390</updated>
+    </task>
+    <task id="LOCAL-00011" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758952465122</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1758952465122</updated>
+    </task>
+    <task id="LOCAL-00012" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758952559285</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1758952559285</updated>
+    </task>
+    <task id="LOCAL-00013" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758952683856</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1758952683856</updated>
+    </task>
+    <task id="LOCAL-00014" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758952750624</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1758952750624</updated>
+    </task>
+    <task id="LOCAL-00015" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758953157236</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1758953157236</updated>
+    </task>
+    <task id="LOCAL-00016" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758953382213</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758953382213</updated>
+    </task>
+    <task id="LOCAL-00017" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758953486390</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1758953486390</updated>
+    </task>
+    <task id="LOCAL-00018" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758953538617</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1758953538617</updated>
+    </task>
+    <task id="LOCAL-00019" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758954749513</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1758954749513</updated>
+    </task>
+    <task id="LOCAL-00020" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758954981448</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1758954981448</updated>
+    </task>
+    <task id="LOCAL-00021" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758955074099</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1758955074099</updated>
+    </task>
+    <task id="LOCAL-00022" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758958641143</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1758958641143</updated>
+    </task>
+    <task id="LOCAL-00023" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758958652089</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1758958652089</updated>
+    </task>
+    <task id="LOCAL-00024" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758958994470</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1758958994470</updated>
+    </task>
+    <task id="LOCAL-00025" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1758959168542</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1758959168542</updated>
+    </task>
+    <task id="LOCAL-00026" summary="mobile navigation bottom padding support">
+      <option name="closed" value="true" />
+      <created>1758959545623</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1758959545623</updated>
+    </task>
+    <task id="LOCAL-00027" summary="mobile navigation bottom padding support">
+      <option name="closed" value="true" />
+      <created>1758959768275</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1758959768275</updated>
+    </task>
+    <task id="LOCAL-00028" summary="mobile navigation bottom padding support">
+      <option name="closed" value="true" />
+      <created>1758995799651</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1758995799651</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added worked company logo">
+      <option name="closed" value="true" />
+      <created>1759041880565</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1759041880565</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added worked company">
+      <option name="closed" value="true" />
+      <created>1759041899977</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1759041899977</updated>
+    </task>
+    <task id="LOCAL-00031" summary="remove unwanted files">
+      <option name="closed" value="true" />
+      <created>1759042248254</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1759042248254</updated>
+    </task>
+    <task id="LOCAL-00032" summary="remove unwanted testimonals">
+      <option name="closed" value="true" />
+      <created>1759043208265</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1759043208265</updated>
+    </task>
+    <task id="LOCAL-00033" summary="pop up dialog implementation">
+      <option name="closed" value="true" />
+      <created>1759044216616</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1759044216616</updated>
+    </task>
+    <task id="LOCAL-00034" summary="add blog navigation">
+      <option name="closed" value="true" />
+      <created>1759601915859</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1759601915859</updated>
+    </task>
+    <task id="LOCAL-00035" summary="update README with project structure, requirements, and deployment details">
+      <option name="closed" value="true" />
+      <created>1759603606820</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1759603606820</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: replace portfolio with KMP starter&#10;&#10;Removes the static HTML/CSS/JS portfolio site and replaces it with a new Kotlin Multiplatform (KMP) starter project structure.">
+      <option name="closed" value="true" />
+      <created>1759689993658</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1759689993658</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add platform-specific vector drawables&#10;&#10;Adds multiple vector drawable resources for the Compose app, including icons for Android, Firebase, Email, Hamburger menu, GitHub, Dark/Light themes, Java, LinkedIn, and Instagram. These resources enhance UI visuals across platforms.">
+      <option name="closed" value="true" />
+      <created>1759865145931</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1759865145931</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/feature/v2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="mobile navigation bottom padding support" />
+    <MESSAGE value="added worked company logo" />
+    <MESSAGE value="added worked company" />
+    <MESSAGE value="remove unwanted files" />
+    <MESSAGE value="remove unwanted testimonals" />
+    <MESSAGE value="pop up dialog implementation" />
+    <MESSAGE value="add blog navigation" />
+    <MESSAGE value="update README with project structure, requirements, and deployment details" />
+    <MESSAGE value="feat: replace portfolio with KMP starter&#10;&#10;Removes the static HTML/CSS/JS portfolio site and replaces it with a new Kotlin Multiplatform (KMP) starter project structure." />
+    <MESSAGE value="add platform-specific vector drawables&#10;&#10;Adds multiple vector drawable resources for the Compose app, including icons for Android, Firebase, Email, Hamburger menu, GitHub, Dark/Light themes, Java, LinkedIn, and Instagram. These resources enhance UI visuals across platforms." />
+    <option name="LAST_COMMIT_MESSAGE" value="add platform-specific vector drawables&#10;&#10;Adds multiple vector drawable resources for the Compose app, including icons for Android, Firebase, Email, Hamburger menu, GitHub, Dark/Light themes, Java, LinkedIn, and Instagram. These resources enhance UI visuals across platforms." />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.tarifchakder.portfolio">
+          <value>
+            <CheckInfo lastCheckTimestamp="1759772165631" />
+          </value>
+        </entry>
+        <entry key="com.tarifchakder.portfolio.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1759772165631" />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
