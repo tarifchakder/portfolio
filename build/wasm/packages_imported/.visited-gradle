@@ -138,6 +138,10 @@
     },
     "51c3842ae933e33c86a1be2ae591e03c": {
       "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-wasm-js/2.2.20/2a1826a747e21f49a86ab70ec76f0dab5dfa0d1/kotlin-test-wasm-js-2.2.20.klib"
+    },
+    "44c13f87f4f8a13437989bff4a5aa360": {
+      "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/com.tarifchakder/material-theme-wasm-js/1.1.0/ac581a6f9994024fa66e197838a4ddf594419f3e/material-theme-kit-wasm-js.klib",
+      "target": "material-theme-wasm-js/1.1.0"
     }
   }
 }
