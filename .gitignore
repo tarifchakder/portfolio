@@ -13,3 +13,6 @@ store/
 
 # Local machine-specific
 local.properties
+
+# IDE
+.idea/
