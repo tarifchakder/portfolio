@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-composeApp",
+  "version": "0.0.0-unspecified",
+  "main": "portfolio-composeApp.mjs",
+  "devDependencies": {},
+  "dependencies": {
+    "@js-joda/core": "3.2.0",
+    "format-util": "^1.0.5"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}
