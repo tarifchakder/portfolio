@@ -44,7 +44,6 @@ import portfolio.composeapp.generated.resources.rounded_pic
 
 @Composable
 fun App() {
-
     val currentMode = isSystemInDarkTheme()
     var isDarkMode = remember { mutableStateOf(currentMode) }
 
@@ -115,7 +114,7 @@ private fun SideBar(
             )
             Text(
                 modifier = Modifier.padding(top = 10.dp),
-                text = "Md Tarif Chakder",
+                text = """Md Tarif Chakder""",
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleLarge
             )
