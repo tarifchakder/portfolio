@@ -133,10 +133,6 @@
     "de3c33d707e2d626f0c9c57ca189b415": {
       "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.components/components-ui-tooling-preview-wasmJs/1.9.0/a5d8ee8b35796cf382952a2612473506ca23ff60/library-wasm-js-1.9.0.klib"
     },
-    "932bc5f079644d8eb0f38cc31c87b56c": {
-      "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/com.tarifchakder/material-theme-wasm-js/1.4.0/5efab6f8160349a2ae242a447bec07d1077a4f07/material-theme-kit-wasm-js.klib",
-      "target": "material-theme-wasm-js/1.4.0"
-    },
     "b78f4ff26be6425591b9a9a606872b45": {
       "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose-wasm-js/2.9.4/5d3f8cd090d645722d0ddad062dd2914c6dfb883/lifecycle-viewmodel-compose-wasm-js-2.9.4.klib"
     },
