@@ -18,8 +18,7 @@ kotlin {
     }
 
     listOf(
-        iosArm64(),
-        iosSimulatorArm64(),
+        iosX64(), iosArm64(), iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
@@ -53,14 +52,15 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.material.theme)
-            implementation(libs.bundles.androidx.lifecycle)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.androidx.lifecycle.viewmodelCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.bundles.kotlinx.coroutines)
+            implementation(libs.kotlinx.coroutinesSwing)
         }
     }
 }

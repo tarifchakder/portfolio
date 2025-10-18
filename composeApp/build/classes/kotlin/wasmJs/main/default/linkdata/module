@@ -1,2 +1,2 @@
 
-<portfolio:composeApp>:com.tarifchakder:com.tarifchakder.theme:(portfolio.composeapp.generated.resources
+<portfolio:composeApp>:com.tarifchakder:com.tarifchakder.domain:$com.tarifchakder.presentation.widget:com.tarifchakder.theme:(portfolio.composeapp.generated.resources
