@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -42,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import com.tarifchakder.domain.WindowSizeClass
 import com.tarifchakder.materializekmp.DynamicTheme
 import com.tarifchakder.presentation.widget.AnimateSkillText
+import com.tarifchakder.presentation.widget.IconButtonRow
 import com.tarifchakder.presentation.widget.ImageTitleSubtitleCard
 import com.tarifchakder.theme.Typography
 import com.tarifchakder.theme.seedColor
@@ -149,7 +151,6 @@ private fun SideBar(
                     uriHandler.openUri("mailto:tarifchakdar@gmail.com")
                 }
             )
-
             ImageTitleSubtitleCard(
                 icon = Icons.Rounded.Phone,
                 title = "MOBILE",
@@ -159,7 +160,6 @@ private fun SideBar(
                     uriHandler.openUri("tel:+971589513506")
                 }
             )
-
             ImageTitleSubtitleCard(
                 icon = Icons.Rounded.LocationOn,
                 title = "LOCATION",
@@ -169,6 +169,10 @@ private fun SideBar(
                     uriHandler.openUri("https://maps.app.goo.gl/dEgXiL8fcfqwRWgNA")
                 }
             )
+            Spacer(Modifier.height(10.dp))
+            IconButtonRow {
+
+            }
         }
     }
 }
