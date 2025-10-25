@@ -1,4 +1,4 @@
-package com.tarifchakder
+package com.tarifchakder.presentation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
@@ -13,11 +13,19 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.LocationOn
+import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,12 +37,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import com.tarifchakder.domain.WindowSizeClass
 import com.tarifchakder.materializekmp.DynamicTheme
 import com.tarifchakder.presentation.widget.AnimateSkillText
+import com.tarifchakder.presentation.widget.ImageTitleSubtitleCard
 import com.tarifchakder.theme.Typography
 import com.tarifchakder.theme.seedColor
+import com.tarifchakder.util.urlEncode
 import org.jetbrains.compose.resources.painterResource
 
 import portfolio.composeapp.generated.resources.Res
@@ -95,6 +106,8 @@ fun App() {
 private fun SideBar(
     modifier: Modifier = Modifier
 ) {
+    val uriHandler = LocalUriHandler.current
+
     Card(
         modifier = modifier.fillMaxHeight().width(320.dp),
         shape = MaterialTheme.shapes.large,
@@ -121,6 +134,40 @@ private fun SideBar(
             )
             AnimateSkillText(
                 modifier = Modifier.padding(top = 10.dp)
+            )
+            HorizontalDivider(
+                modifier = Modifier.padding(30.dp),
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant.copy(0.5f)
+            )
+            ImageTitleSubtitleCard(
+                icon = Icons.Rounded.Email,
+                title = "EMAIL",
+                subtitle = "tarifchakdar@gmail.com",
+                modifier = Modifier.fillMaxWidth().padding(start = 10.dp, top = 5.dp, bottom = 5.dp),
+                onClick = {
+                    uriHandler.openUri("mailto:tarifchakdar@gmail.com")
+                }
+            )
+
+            ImageTitleSubtitleCard(
+                icon = Icons.Rounded.Phone,
+                title = "MOBILE",
+                subtitle = "+971 589513506",
+                modifier = Modifier.fillMaxWidth().padding(start = 10.dp, top = 5.dp, bottom = 5.dp),
+                onClick = {
+                    uriHandler.openUri("tel:+971589513506")
+                }
+            )
+
+            ImageTitleSubtitleCard(
+                icon = Icons.Rounded.LocationOn,
+                title = "LOCATION",
+                subtitle = "United Arab Emirates",
+                modifier = Modifier.fillMaxWidth().padding(start = 10.dp, top = 5.dp, bottom = 5.dp),
+                onClick = {
+                    uriHandler.openUri("https://maps.app.goo.gl/dEgXiL8fcfqwRWgNA")
+                }
             )
         }
     }

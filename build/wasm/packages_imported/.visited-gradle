@@ -142,6 +142,12 @@
     },
     "51c3842ae933e33c86a1be2ae591e03c": {
       "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-wasm-js/2.2.20/2a1826a747e21f49a86ab70ec76f0dab5dfa0d1/kotlin-test-wasm-js-2.2.20.klib"
+    },
+    "4cbe3ddd12000b04c38d65166243ab25": {
+      "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-extended-wasm-js/1.7.3/d01db77e4295c019018ccc83b56933703c040dd9/material-icons-extended-wasm-js-1.7.3.klib"
+    },
+    "c1419ee1b9237fdda2264c63592ac388": {
+      "src": "/Users/tarif/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-core-wasm-js/1.7.3/d896523c87aa91d43c749541e6623ec78b1a4555/material-icons-core-wasm-js-1.7.3.klib"
     }
   }
 }
