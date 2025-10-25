@@ -1,7 +1,9 @@
 # Gradle
 .gradle/
+/build/
 build/
-*/build/
+composeApp/build/
+**/build/
 
 # Kotlin
 .kotlin/
