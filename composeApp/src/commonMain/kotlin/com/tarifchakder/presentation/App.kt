@@ -64,7 +64,7 @@ import portfolio.composeapp.generated.resources.rounded_pic
 fun App() {
 
     val currentMode = isSystemInDarkTheme()
-    var isDarkMode = remember { mutableStateOf(currentMode) }
+    val isDarkMode = remember { mutableStateOf(currentMode) }
 
     DynamicTheme(
         seedColor = seedColor,
@@ -175,9 +175,12 @@ private fun SideBar(
                 }
             )
             Spacer(Modifier.height(25.dp))
-            IconButtonRow {
-
-            }
+            IconButtonRow(
+                onLinkedinClick = { uriHandler.openUri("https://www.linkedin.com/in/tarifchakder") },
+                onGithubLinkedIn = { uriHandler.openUri("https://github.com/tarifchakder") },
+                onGooglePlayClick = { uriHandler.openUri("https://play.google.com/store/apps/dev?id=6362563028488118131") },
+                onInstagramClick = { uriHandler.openUri("https://www.instagram.com/tarifchakder/") }
+            )
         }
     }
 }
