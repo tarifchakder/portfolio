@@ -4,6 +4,7 @@
 build/
 composeApp/build/
 **/build/
+build/wasm
 
 # Kotlin
 .kotlin/
