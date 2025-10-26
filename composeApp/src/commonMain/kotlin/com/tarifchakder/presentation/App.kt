@@ -5,8 +5,10 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,9 +16,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
@@ -37,11 +41,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import com.tarifchakder.domain.WindowSizeClass
 import com.tarifchakder.materializekmp.DynamicTheme
 import com.tarifchakder.presentation.widget.AnimateSkillText
+import com.tarifchakder.presentation.widget.CustomCard
+import com.tarifchakder.presentation.widget.IconButtonRow
 import com.tarifchakder.presentation.widget.ImageTitleSubtitleCard
 import com.tarifchakder.theme.Typography
 import com.tarifchakder.theme.seedColor
@@ -57,7 +64,7 @@ import portfolio.composeapp.generated.resources.rounded_pic
 fun App() {
 
     val currentMode = isSystemInDarkTheme()
-    var isDarkMode = remember { mutableStateOf(currentMode) }
+    val isDarkMode = remember { mutableStateOf(currentMode) }
 
     DynamicTheme(
         seedColor = seedColor,
@@ -149,7 +156,6 @@ private fun SideBar(
                     uriHandler.openUri("mailto:tarifchakdar@gmail.com")
                 }
             )
-
             ImageTitleSubtitleCard(
                 icon = Icons.Rounded.Phone,
                 title = "MOBILE",
@@ -159,7 +165,6 @@ private fun SideBar(
                     uriHandler.openUri("tel:+971589513506")
                 }
             )
-
             ImageTitleSubtitleCard(
                 icon = Icons.Rounded.LocationOn,
                 title = "LOCATION",
@@ -168,6 +173,13 @@ private fun SideBar(
                 onClick = {
                     uriHandler.openUri("https://maps.app.goo.gl/dEgXiL8fcfqwRWgNA")
                 }
+            )
+            Spacer(Modifier.height(25.dp))
+            IconButtonRow(
+                onLinkedinClick = { uriHandler.openUri("https://www.linkedin.com/in/tarifchakder") },
+                onGithubLinkedIn = { uriHandler.openUri("https://github.com/tarifchakder") },
+                onGooglePlayClick = { uriHandler.openUri("https://play.google.com/store/apps/dev?id=6362563028488118131") },
+                onInstagramClick = { uriHandler.openUri("https://www.instagram.com/tarifchakder/") }
             )
         }
     }
