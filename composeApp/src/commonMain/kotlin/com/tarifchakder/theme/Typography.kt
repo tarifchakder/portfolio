@@ -97,7 +97,7 @@ fun Typography(): Typography = Typography(
     ),
     bodyMedium = TextStyle(
         fontFamily = Poppins(),
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.W600,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.25.sp,
@@ -119,7 +119,7 @@ fun Typography(): Typography = Typography(
     ),
     labelMedium = TextStyle(
         fontFamily = Poppins(),
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.W600,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp,
