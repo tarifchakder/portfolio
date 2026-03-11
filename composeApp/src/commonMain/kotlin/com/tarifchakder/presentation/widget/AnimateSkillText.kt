@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.animation.with
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.delay
 
 
@@ -40,13 +42,13 @@ fun AnimateSkillText(
 
     AnimatedContent(
         targetState = messages[index],
-        transitionSpec = { fadeIn() with fadeOut() }
+        transitionSpec = { fadeIn().togetherWith(fadeOut()) }
     ) { targetMessage ->
         Text(
             modifier = modifier,
             text = targetMessage,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
         )
     }
 }

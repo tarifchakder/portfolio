@@ -1,11 +1,9 @@
 package com.tarifchakder.presentation.widget
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,6 +18,7 @@ import portfolio.composeapp.generated.resources.github
 import portfolio.composeapp.generated.resources.googleplay
 import portfolio.composeapp.generated.resources.instagram
 import portfolio.composeapp.generated.resources.linkedin
+import portfolio.composeapp.generated.resources.whatsapp
 
 @Composable
 fun IconButtonRow(
@@ -28,6 +27,7 @@ fun IconButtonRow(
     onGithubLinkedIn: () -> Unit = {},
     onGooglePlayClick: () -> Unit = {},
     onInstagramClick: () -> Unit = {},
+    onWhatsappClick: () -> Unit = {},
 ) {
     Row(
         modifier = modifier,
@@ -60,6 +60,13 @@ fun IconButtonRow(
             contentDescription = "Instagram",
             modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
                 .noRippleClickable(onClick = onInstagramClick)
+        )
+
+        Image(
+            painter = painterResource(Res.drawable.whatsapp),
+            contentDescription = "WhatsApp",
+            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
+                .noRippleClickable(onClick = onWhatsappClick)
         )
     }
 }
