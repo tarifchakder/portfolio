@@ -1,15 +1,14 @@
-# Gradle
+# macOS
+.DS_Store
+
+# Gradle / Kotlin
 .gradle/
-/build/
-build/
-composeApp/build/
-**/build/
-build/wasm
-
-# Kotlin
 .kotlin/
+**/build/
+build/wasm/
+gradle/gradle-daemon-jvm.properties
 
-# Kotlin JS store and related
+# Kotlin/JS local cache
 kotlin-js-store/
 kotlin-js/
 store/
@@ -19,3 +18,9 @@ local.properties
 
 # IDE
 .idea/
+*.iml
+
+# Xcode local user data
+**/xcuserdata/
+*.xcuserstate
+DerivedData/
