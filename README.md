@@ -1,107 +1,112 @@
-# Tarif Chakder — Portfolio (Kotlin Multiplatform)
+# Tarif Chakder Portfolio
 
-A personal portfolio application built with Kotlin Multiplatform and Compose Multiplatform, targeting:
+A personal portfolio application built with Kotlin Multiplatform and Compose Multiplatform.
+
+The app shares one UI codebase across:
 - Android
 - iOS
 - Desktop (JVM)
 - Web (JS)
 - WebAssembly (Wasm)
 
-Single codebase, native UI with Compose across platforms.
+This project is under development. Contributions are welcome through pull requests.
+
+## What the app includes
+
+- Responsive portfolio layout for compact, medium, and expanded screens
+- Sidebar profile card with contact and social actions
+- Theme toggle with light/dark support
+- Top navigation for `About`, `Resume`, `Work`, and `Blog`
+- Resume section with experience, education, and skills
+- Shared Compose UI in `commonMain`
+
+Current state:
+- `About` and `Resume` are implemented
+- `Work` and `Blog` currently use placeholder content
 
 ## Tech stack
+
 - Kotlin Multiplatform
-- JetBrains Compose Multiplatform (Material 3)
-- Android, iOS (Xcode entry app), Desktop (JVM), Web (JS), Wasm
+- JetBrains Compose Multiplatform
+- Material 3
 - Gradle Kotlin DSL
 
 ## Project structure
-- composeApp/src/commonMain — shared UI and logic (e.g., App.kt, Greeting.kt)
-- composeApp/src/androidMain — Android-specific code and resources
-- composeApp/src/iosMain — iOS framework bindings used by the Xcode app
-- composeApp/src/jvmMain — Desktop (JVM) entry point
-- composeApp/src/jsMain — Web (JS) target
-- composeApp/src/wasmJsMain — WebAssembly (Wasm) target
-- composeApp/src/webMain — Static web resources (index.html, styles.css)
-- iosApp — Xcode project that embeds the shared KMP framework
 
-## Prerequisites
-- Android Studio (or IntelliJ IDEA) with Kotlin/Compose support
-- JDK 17 or 11 installed (project compiles with Java 11 target)
+- `composeApp/src/commonMain` shared UI, navigation, theme, and app logic
+- `composeApp/src/androidMain` Android-specific entry code
+- `composeApp/src/iosMain` iOS framework bindings
+- `composeApp/src/jvmMain` desktop entry point
+- `composeApp/src/jsMain` JavaScript web target
+- `composeApp/src/wasmJsMain` WebAssembly target
+- `composeApp/src/webMain/resources` static web resources
+- `iosApp` Xcode host app for the shared iOS framework
+
+## Requirements
+
+- JDK 11 or newer
+- Android Studio or IntelliJ IDEA
 - Android SDK for Android builds
-- Xcode (15+) for iOS builds
-- Recent Chrome/Safari/Firefox for Web/Wasm
+- Xcode for iOS builds
 
-## Build and run
+## Run locally
 
 ### Android
-Use IDE run configuration or build from terminal:
-- macOS/Linux:
-  ```bash
-  ./gradlew :composeApp:assembleDebug
-  ```
-- Windows:
-  ```bash
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
-To install on a connected device/emulator:
-- macOS/Linux: `./gradlew :composeApp:installDebug`
-- Windows: `.\gradlew.bat :composeApp:installDebug`
 
-### Desktop (JVM)
-Run directly:
-- macOS/Linux:
-  ```bash
-  ./gradlew :composeApp:run
-  ```
-- Windows:
-  ```bash
-  .\gradlew.bat :composeApp:run
-  ```
+```bash
+./gradlew :composeApp:assembleDebug
+./gradlew :composeApp:installDebug
+```
 
-### Web
-Development servers:
-- Wasm (faster; modern browsers):
-  - macOS/Linux:
-    ```bash
-    ./gradlew :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-  - Windows:
-    ```bash
-    .\gradlew.bat :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-- JS (older browser support):
-  - macOS/Linux:
-    ```bash
-    ./gradlew :composeApp:jsBrowserDevelopmentRun
-    ```
-  - Windows:
-    ```bash
-    .\gradlew.bat :composeApp:jsBrowserDevelopmentRun
-    ```
-Production distributions (output in build dirs):
-- Wasm: `./gradlew :composeApp:wasmJsBrowserDistribution`
-- JS: `./gradlew :composeApp:jsBrowserDistribution`
+### Desktop
+
+```bash
+./gradlew :composeApp:run
+```
+
+### Web (JS)
+
+```bash
+./gradlew :composeApp:jsBrowserDevelopmentRun
+```
+
+### WebAssembly
+
+```bash
+./gradlew :composeApp:wasmJsBrowserDevelopmentRun
+```
 
 ### iOS
-Open the Xcode project and run on a simulator or device:
-- Path: [iosApp/iosApp.xcodeproj](./iosApp/iosApp.xcodeproj)
-- The shared KMP framework is produced by the Gradle iOS targets (iosArm64/iosSimulatorArm64).
 
-## Package desktop installers (optional)
-Compose Desktop native distributions are configured. To build for your OS:
+Open [iosApp/iosApp.xcodeproj](/Users/tarif/workspace/portfolio/iosApp/iosApp.xcodeproj) in Xcode and run the `iosApp` scheme on a simulator or device.
+
+## Build distributions
+
+### Desktop installers
+
 ```bash
 ./gradlew :composeApp:createDistributable
 ```
-See compose.desktop config in composeApp/build.gradle.kts for formats.
 
-## App ID and package
-- Android applicationId: `com.tarifchakder`
-- Common package: `com.tarifchakder`
+Configured desktop formats:
+- `dmg`
+- `msi`
+- `deb`
+
+### Web production bundles
+
+```bash
+./gradlew :composeApp:jsBrowserDistribution
+./gradlew :composeApp:wasmJsBrowserDistribution
+```
 
 ## Notes
-- This project uses Compose hot reload in supported IDEs.
-- Web resources live in composeApp/src/webMain/resources.
+
+- The Android application ID is `com.tarifchakder`
+- The desktop main class is `com.tarifchakder.MainKt`
+- Local machine files such as `local.properties`, Xcode user data, and Gradle caches are intentionally ignored
+- The resume download action in the app currently points to a placeholder URL and should be replaced with the real hosted CV link
 
 ## License
-No license specified.
+
+This project is licensed under the MIT License. See [LICENSE](/Users/tarif/workspace/portfolio/LICENSE).
