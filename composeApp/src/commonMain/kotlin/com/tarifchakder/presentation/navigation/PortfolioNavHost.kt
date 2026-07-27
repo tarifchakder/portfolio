@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import com.tarifchakder.domain.NavDestination
 import com.tarifchakder.domain.WindowSizeClass
 import com.tarifchakder.presentation.screen.AboutScreen
-import com.tarifchakder.presentation.screen.PlaceholderScreen
 import com.tarifchakder.presentation.screen.ResumeScreen
+import com.tarifchakder.presentation.screen.WorkScreen
 
 @Composable
 fun PortfolioNavHost(
@@ -23,8 +23,7 @@ fun PortfolioNavHost(
         when (destination) {
             NavDestination.Home -> AboutScreen(breakpoint = breakpoint)
             NavDestination.Resume -> ResumeScreen(breakpoint = breakpoint)
-            NavDestination.WORK -> PlaceholderScreen("Work content coming soon.")
-            NavDestination.BLOG -> PlaceholderScreen("Blog content coming soon.")
+            NavDestination.WORK -> WorkScreen()
         }
     }
 }

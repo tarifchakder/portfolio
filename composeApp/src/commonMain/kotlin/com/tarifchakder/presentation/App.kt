@@ -5,12 +5,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,6 +24,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil3.ImageLoader
+import coil3.compose.setSingletonImageLoaderFactory
+import coil3.network.ktor3.KtorNetworkFetcherFactory
+import com.tarifchakder.data.platformHttpClientEngine
+import com.tarifchakder.domain.NavDestination
 import com.tarifchakder.domain.WindowSizeClass
 import com.tarifchakder.materializekmp.DynamicTheme
 import com.tarifchakder.presentation.component.SurfaceCard
@@ -38,8 +46,18 @@ private val SidebarWidth = 350.dp
 
 @Composable
 fun App() {
+    setSingletonImageLoaderFactory { context ->
+        ImageLoader.Builder(context)
+            .components {
+                add(KtorNetworkFetcherFactory(httpClient = { io.ktor.client.HttpClient(platformHttpClientEngine()) }))
+            }
+            .build()
+    }
+
     val systemDarkTheme = isSystemInDarkTheme()
     var isDarkTheme by remember { mutableStateOf(systemDarkTheme) }
+
+    SystemBarsAppearance(useDarkIcons = !isDarkTheme)
 
     DynamicTheme(
         seedColor = seedColor,
@@ -50,6 +68,7 @@ fun App() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(androidx.compose.material3.MaterialTheme.colorScheme.surface)
+                .windowInsetsPadding(WindowInsets.safeDrawing)
         ) {
             val breakpoint = when {
                 maxWidth < 550.dp -> WindowSizeClass.Compact
@@ -64,15 +83,22 @@ fun App() {
             }
 
             var showMobileSidebarDetails by remember { mutableStateOf(false) }
+            var currentDestination by remember { mutableStateOf(NavDestination.Home) }
 
             if (breakpoint == WindowSizeClass.Expanded) {
-                ExpandedLayout(contentPadding = contentPadding)
+                ExpandedLayout(
+                    contentPadding = contentPadding,
+                    currentDestination = currentDestination,
+                    onNavigate = { currentDestination = it }
+                )
             } else {
                 CompactLayout(
                     breakpoint = breakpoint,
                     contentPadding = contentPadding,
                     showSidebarDetails = showMobileSidebarDetails,
-                    onToggleSidebarDetails = { showMobileSidebarDetails = !showMobileSidebarDetails }
+                    onToggleSidebarDetails = { showMobileSidebarDetails = !showMobileSidebarDetails },
+                    currentDestination = currentDestination,
+                    onNavigate = { currentDestination = it }
                 )
             }
 
@@ -88,7 +114,11 @@ fun App() {
 }
 
 @Composable
-private fun ExpandedLayout(contentPadding: Dp) {
+private fun ExpandedLayout(
+    contentPadding: Dp,
+    currentDestination: NavDestination,
+    onNavigate: (NavDestination) -> Unit
+) {
     Row(modifier = Modifier.fillMaxSize()) {
         SurfaceCard(
             modifier = Modifier
@@ -119,7 +149,9 @@ private fun ExpandedLayout(contentPadding: Dp) {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding),
-                breakpoint = WindowSizeClass.Expanded
+                breakpoint = WindowSizeClass.Expanded,
+                currentDestination = currentDestination,
+                onNavigate = onNavigate
             )
         }
     }
@@ -130,7 +162,9 @@ private fun CompactLayout(
     breakpoint: WindowSizeClass,
     contentPadding: Dp,
     showSidebarDetails: Boolean,
-    onToggleSidebarDetails: () -> Unit
+    onToggleSidebarDetails: () -> Unit,
+    currentDestination: NavDestination,
+    onNavigate: (NavDestination) -> Unit
 ) {
     ScrollView(
         modifier = Modifier
@@ -151,7 +185,9 @@ private fun CompactLayout(
 
         MainContentScreen(
             modifier = Modifier.fillMaxWidth(),
-            breakpoint = breakpoint
+            breakpoint = breakpoint,
+            currentDestination = currentDestination,
+            onNavigate = onNavigate
         )
     }
 }

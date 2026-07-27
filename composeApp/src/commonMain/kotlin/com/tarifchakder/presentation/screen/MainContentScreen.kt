@@ -15,10 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -31,10 +27,10 @@ import com.tarifchakder.presentation.widget.AdaptiveNavigationBar
 @Composable
 fun MainContentScreen(
     modifier: Modifier = Modifier,
-    breakpoint: WindowSizeClass
+    breakpoint: WindowSizeClass,
+    currentDestination: NavDestination,
+    onNavigate: (NavDestination) -> Unit
 ) {
-    var currentDestination by remember { mutableStateOf(NavDestination.Home) }
-
     SurfaceCard(modifier = modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Box(
@@ -49,7 +45,7 @@ fun MainContentScreen(
                         Modifier.fillMaxWidth()
                     },
                     currentDestination = currentDestination,
-                    onNavigate = { currentDestination = it }
+                    onNavigate = onNavigate
                 )
             }
 
@@ -60,6 +56,7 @@ fun MainContentScreen(
             ) {
                 AnimatedContent(
                     targetState = currentDestination,
+                    modifier = Modifier.fillMaxWidth(),
                     transitionSpec = {
                         fadeIn().togetherWith(fadeOut()).using(SizeTransform(clip = false))
                     },

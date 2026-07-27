@@ -54,6 +54,7 @@ import com.tarifchakder.presentation.widget.AnimateSkillText
 import com.tarifchakder.presentation.widget.IconButtonRow
 import com.tarifchakder.presentation.widget.ImageTitleSubtitleCard
 import com.tarifchakder.util.noRippleClickable
+import com.tarifchakder.util.softShadow
 import org.jetbrains.compose.resources.painterResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.rounded_pic
@@ -200,12 +201,15 @@ private fun WhatsappOptionCard(
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth().noRippleClickable(onClick = onClick),
+        modifier = Modifier
+            .fillMaxWidth()
+            .softShadow(MaterialTheme.shapes.large)
+            .noRippleClickable(onClick = onClick),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
         ),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f))
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
