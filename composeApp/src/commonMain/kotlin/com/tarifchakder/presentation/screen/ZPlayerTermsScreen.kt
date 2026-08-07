@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tarifchakder.materializekmp.DynamicTheme
 import com.tarifchakder.presentation.SystemBarsAppearance
 import com.tarifchakder.theme.seedColor
@@ -74,12 +75,15 @@ private fun TermsContent() {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 32.dp)
+            .padding(horizontal = 28.dp, vertical = 32.dp)
     ) {
         Text(
             text = "ZPlayer Terms and Conditions",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.headlineMedium.copy(
+                fontSize = 26.sp,
+                lineHeight = 32.sp
+            ),
+            fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onSurface
         )
         Spacer(Modifier.height(8.dp))
@@ -88,7 +92,7 @@ private fun TermsContent() {
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-        Spacer(Modifier.height(28.dp))
+        Spacer(Modifier.height(24.dp))
         BodyText("Please read these Terms and Conditions (\"Terms\") before using ZPlayer (\"the App\"). By installing, opening, or using the App, you agree to these Terms. If you do not agree, please do not use the App.")
 
         TermsSection("1. About ZPlayer") {
@@ -178,12 +182,15 @@ private fun TermsContent() {
             Text(
                 text = ContactEmail,
                 modifier = Modifier.clickable { uriHandler.openUri("mailto:$ContactEmail") },
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontSize = 14.sp,
+                    lineHeight = 22.sp
+                ),
                 color = MaterialTheme.colorScheme.primary
             )
         }
 
-        Spacer(Modifier.height(32.dp))
+        Spacer(Modifier.height(28.dp))
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         Spacer(Modifier.height(20.dp))
         Text(
@@ -197,10 +204,13 @@ private fun TermsContent() {
 
 @Composable
 private fun TermsSection(title: String, content: @Composable () -> Unit) {
-    Spacer(Modifier.height(28.dp))
+    Spacer(Modifier.height(24.dp))
     Text(
         text = title,
-        style = MaterialTheme.typography.titleMedium,
+        style = MaterialTheme.typography.titleMedium.copy(
+            fontSize = 17.sp,
+            lineHeight = 23.sp
+        ),
         color = MaterialTheme.colorScheme.onSurface
     )
     Spacer(Modifier.height(10.dp))
@@ -213,26 +223,37 @@ private fun TermsSection(title: String, content: @Composable () -> Unit) {
 private fun BodyText(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.bodyLarge,
+        style = MaterialTheme.typography.bodyLarge.copy(
+            fontSize = 14.sp,
+            lineHeight = 22.sp,
+            letterSpacing = 0.15.sp
+        ),
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
 }
 
 @Composable
 private fun BulletList(vararg items: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         items.forEach { item ->
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = "•",
                     modifier = Modifier.width(22.dp),
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 14.sp,
+                        lineHeight = 22.sp
+                    ),
                     color = MaterialTheme.colorScheme.primary
                 )
                 Text(
                     text = item,
                     modifier = Modifier.weight(1f),
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 14.sp,
+                        lineHeight = 22.sp,
+                        letterSpacing = 0.15.sp
+                    ),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
