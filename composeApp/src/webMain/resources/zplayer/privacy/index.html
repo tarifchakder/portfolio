@@ -76,7 +76,7 @@
 <main>
     <header>
         <h1>ZPlayer Privacy Policy</h1>
-        <p class="updated">Last updated: August 8, 2026</p>
+        <p class="updated">Last updated: August 28, 2026</p>
     </header>
 
     <p>This Privacy Policy explains how ZPlayer ("the App") accesses, uses, stores, shares, and protects information when you use the App.</p>
@@ -85,11 +85,11 @@
     <h2>1. Developer Information</h2>
     <p>Developer/Publisher: MR Dev<br>
         Contact email: <a href="mailto:mrtechcoder@gmail.com">mrtechcoder@gmail.com</a><br>
-        Website: <a href="https://mrtechcoder.com">tarifchakder.com</a></p>
+        Website: <a href="https://tarifchakder.com/">tarifchakder.com</a></p>
 
     <h2>2. Summary</h2>
     <p>ZPlayer is a local media player, file browser, media utility, and video-to-audio converter. The App needs access to media and files on your device so it can show and play your videos, music, and images, manage files you choose, convert selected videos to audio, and support private hidden media features.</p>
-    <p>Most media processing happens locally on your device. However, the App may use third-party advertising services such as Google AdMob. Those services may collect or receive data as described in their own privacy policies and Google Play Data safety disclosures.</p>
+    <p>Most media processing happens locally on your device. The App does not require an account and does not operate a backend server that stores your personal data. The App may use third-party advertising services such as Google AdMob, and an optional cover-art search feature that queries a public music-metadata service. Those services are described in detail below.</p>
 
     <h2>3. Information the App May Access</h2>
     <p>Depending on your device, Android version, permissions, and the features you use, the App may access:</p>
@@ -103,7 +103,7 @@
         <li>app settings, theme settings, PIN/security settings, and preferences;</li>
         <li>conversion task state and output file information;</li>
         <li>notification and foreground service state for playback or conversion progress;</li>
-        <li>network state and internet access for ads and related third-party services; and</li>
+        <li>network state and internet access for ads, cover-art search, and related third-party services; and</li>
         <li>advertising identifiers or device/ad data handled by advertising SDKs, where available and permitted by the device and user settings.</li>
     </ul>
 
@@ -115,10 +115,10 @@
         <li>all files access for file manager features, when enabled by the user;</li>
         <li>notification permission for playback and conversion updates;</li>
         <li>foreground service permissions for media playback or conversion progress;</li>
-        <li>internet and network state access for advertisements and related services; and</li>
+        <li>internet and network state access for advertisements, cover-art search, and related services; and</li>
         <li>advertising ID permission for advertising features.</li>
     </ul>
-    <p>If you deny or revoke a permission, the related feature may stop working until the permission is granted again.</p>
+    <p>The App does not request location, camera, microphone, contacts, or SMS permissions. If you deny or revoke a permission, the related feature may stop working until the permission is granted again.</p>
 
     <h2>5. How Information Is Used</h2>
     <p>The App uses information to:</p>
@@ -131,7 +131,7 @@
         <li>hide, restore, or permanently delete selected private media files when you request it;</li>
         <li>share selected files through Android sharing features;</li>
         <li>show playback or conversion notifications;</li>
-        <li>improve app stability and user experience; and</li>
+        <li>look up album cover art when you use the optional cover-art search feature; and</li>
         <li>show advertisements.</li>
     </ul>
 
@@ -144,6 +144,7 @@
     <ul>
         <li>when you choose to share a file using Android's share sheet or another app;</li>
         <li>when a third-party advertising SDK such as Google AdMob loads, displays, or measures ads;</li>
+        <li>when you use the optional cover-art search feature, which sends the song/album/artist text you search with to the public MusicBrainz API and fetches matching artwork from the Cover Art Archive (this only happens when you actively use this feature, never automatically or in the background);</li>
         <li>when Android system services are used to open links, provide notifications, manage files, or play media; and</li>
         <li>when required by law, legal process, security, fraud prevention, or policy enforcement.</li>
     </ul>
@@ -153,27 +154,30 @@
     <p>The App may display ads using Google AdMob or another advertising provider. Advertising providers may collect or process information such as device information, app interaction data, approximate location inferred by network, ad identifiers, diagnostics, and ad performance data. Their practices are controlled by their own policies and user/device settings.</p>
     <p>For more information, review <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://support.google.com/admob/">Google AdMob Help</a>.</p>
 
-    <h2>9. Data Retention and Deletion</h2>
+    <h2>9. Cover Art Search (MusicBrainz &amp; Cover Art Archive)</h2>
+    <p>If you use the App's optional "search for album cover" feature, the search text you enter is sent to the public MusicBrainz API (<a href="https://musicbrainz.org">musicbrainz.org</a>) to find a matching release, and the resulting artwork is fetched from the Cover Art Archive (<a href="https://coverartarchive.org">coverartarchive.org</a>). No account identifiers or device identifiers are sent as part of this request, only the search text you enter. Review MusicBrainz's own privacy documentation for how they handle search requests.</p>
+
+    <h2>10. Data Retention and Deletion</h2>
     <p>Local app data remains on your device until it is deleted by you, removed by an app feature, cleared through Android settings, or removed when the App is uninstalled.</p>
     <p>You can delete or change many items directly in the App, including selected media files, hidden files, converted files, and settings where available. You can also clear app data or uninstall the App from Android settings.</p>
     <p>Third-party advertising providers may retain data according to their own retention policies.</p>
 
-    <h2>10. Backups and Device Transfer</h2>
-    <p>Android backup or device transfer features may back up some app data depending on your device, Android version, Google account settings, manufacturer behavior, and the App's backup configuration.</p>
+    <h2>11. Backups and Device Transfer</h2>
+    <p>ZPlayer disables Android's automatic backup and cloud-backup features for its app data (<code>allowBackup="false"</code>). App data such as your settings, media library index, hidden-file records, and PIN are not included in Android device backups or cloud backup and are not transferred automatically when you set up a new device.</p>
 
-    <h2>11. Children</h2>
+    <h2>12. Children</h2>
     <p>The App is not intended for children under the minimum age required by applicable law. The App does not knowingly collect personal information from children. If you believe a child has provided personal information through the App, contact the developer using the contact information above.</p>
 
-    <h2>12. Security</h2>
+    <h2>13. Security</h2>
     <p>The App uses Android platform protections and app-private storage where available. However, no app or storage system can guarantee absolute security. You are responsible for keeping your device, lock screen, Google account, and app PIN/security information secure.</p>
 
-    <h2>13. International Users</h2>
-    <p>Your information may be processed on your device and by third-party services in countries where those services operate. Privacy laws may vary by region.</p>
+    <h2>14. International Users</h2>
+    <p>Your information may be processed on your device and by third-party services (including Google AdMob and MusicBrainz) in countries where those services operate. Privacy laws may vary by region.</p>
 
-    <h2>14. Changes to This Privacy Policy</h2>
+    <h2>15. Changes to This Privacy Policy</h2>
     <p>This Privacy Policy may be updated from time to time. The updated version will be published with a new "Last updated" date. Continued use of the App after an update means you accept the updated Privacy Policy.</p>
 
-    <h2>15. Contact</h2>
+    <h2>16. Contact</h2>
     <p>If you have questions or requests about this Privacy Policy, contact:<br>
         <a href="mailto:mrtechcoder@gmail.com">mrtechcoder@gmail.com</a></p>
 
