@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Open source software notices and licenses used by the ZPlayer media player app.">
+    <meta name="robots" content="index,follow">
+    <title>ZPlayer Open Source Licenses</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --page: #f5f7fa;
+            --card: #ffffff;
+            --text: #20242c;
+            --muted: #667085;
+            --accent: #4f46e5;
+            --border: #e4e7ec;
+            --chip-bg: #eef0ff;
+            --chip-text: #4338ca;
+            --code-bg: #f2f4f7;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --page: #101217;
+                --card: #191c23;
+                --text: #f2f4f7;
+                --muted: #a4adbd;
+                --accent: #a5b4fc;
+                --border: #30343d;
+                --chip-bg: #262a45;
+                --chip-text: #c7d2fe;
+                --code-bg: #20242c;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--text);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        main {
+            width: min(calc(100% - 32px), 820px);
+            margin: 40px auto;
+            padding: clamp(24px, 5vw, 48px);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgb(16 24 40 / 7%);
+        }
+
+        h1, h2 { color: var(--text); line-height: 1.3; }
+        h1 { margin: 0 0 6px; font-size: clamp(1.75rem, 5vw, 2.25rem); letter-spacing: -0.025em; }
+        h2 { margin: 32px 0 10px; font-size: 1.1rem; }
+        p, ul { margin: 0 0 14px; }
+        ul { padding-left: 1.25rem; }
+        li + li { margin-top: 4px; }
+        .updated { margin-bottom: 26px; color: var(--muted); font-size: 0.9rem; }
+        a { color: var(--accent); text-underline-offset: 3px; }
+        code { background: var(--code-bg); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em; }
+
+        .lib-list {
+            list-style: none;
+            margin: 0 0 8px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lib-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 18px;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+        }
+
+        .lib-item[open] { border-color: var(--accent); }
+
+        @media (hover: hover) {
+            .lib-item:hover { border-color: var(--accent); }
+        }
+
+        .lib-item summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+            font-weight: 600;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .lib-item summary:active { opacity: 0.7; }
+
+        .lib-item summary::-webkit-details-marker { display: none; }
+
+        .lib-item summary::after {
+            content: "\25BE";
+            flex-shrink: 0;
+            color: var(--muted);
+            font-weight: 400;
+            margin-top: 0.2em;
+            transition: transform 0.22s ease;
+        }
+
+        .lib-item[open] summary::after { transform: rotate(180deg); }
+
+        .lib-name { color: var(--text); min-width: 0; }
+        .lib-name .maintainer { color: var(--muted); font-weight: 400; font-size: 0.85em; display: block; margin-top: 3px; }
+
+        .chip {
+            flex-shrink: 0;
+            background: var(--chip-bg);
+            color: var(--chip-text);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+            margin-top: 0.1em;
+        }
+
+        .lib-body {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .lib-body p { margin: 0 0 8px; }
+        .lib-body pre {
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 12px 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+            font-size: 0.82rem;
+            color: var(--text);
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 38px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 560px) {
+            body { background: var(--card); }
+            main { width: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+            .lib-item { padding: 12px 14px; border-radius: 12px; }
+            .lib-item summary { gap: 10px; }
+            .chip { font-size: 0.68rem; padding: 3px 8px; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Open Source Licenses</h1>
+        <p class="updated">ZPlayer &middot; Last updated: August 28, 2026</p>
+    </header>
+
+    <p>ZPlayer is built with the help of open source software. This page lists the third-party libraries bundled with the App, along with the license each one is distributed under. Tap any entry to read its full license text.</p>
+    <p>Some entries link to the license's canonical text instead of reproducing it in full, where the license itself is long (for example GPL, LGPL, and Apache 2.0).</p>
+
+    <h2>Android &amp; Kotlin Libraries</h2>
+    <ul class="lib-list">
+        <li><details class="lib-item">
+            <summary><span class="lib-name">AndroidX<span class="maintainer">Google / The Android Open Source Project</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>The suite of Jetpack libraries used for app architecture, storage, background work, and navigation: Core, Lifecycle, Activity, AppCompat, DocumentFile, Palette, SplashScreen, Startup, Navigation3, ConstraintLayout, DataStore, Room, and WorkManager.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Jetpack Compose<span class="maintainer">Google</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>The declarative UI toolkit used to build the entire ZPlayer interface: UI, Foundation, Material3, Material Icons, Animation, and Runtime.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Kotlin Coroutines &amp; kotlinx.serialization<span class="maintainer">JetBrains</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>Used for asynchronous work and for serializing settings and app state.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Ktor Client<span class="maintainer">JetBrains</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>HTTP client used for the optional cover-art search feature (MusicBrainz / Cover Art Archive).</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Koin<span class="maintainer">InsertKoin</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>Dependency injection framework used throughout the App.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">AndroidX Media3<span class="maintainer">Google</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>ExoPlayer, Session, UI, and Common — used for video playback, streaming protocol support, and the media notification/session integration.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">jaudiotagger<span class="maintainer">jthink</span></span><span class="chip">LGPL</span></summary>
+            <div class="lib-body">
+                <p>Used to read and write audio file tags/metadata (title, artist, album, artwork).</p>
+                <p>Distributed under the GNU Lesser General Public License. See the project's repository for the exact version and full text.</p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Coil<span class="maintainer">Coil Contributors</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>Image and video-frame loading library used for thumbnails, artwork, and cover images.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Lottie for Compose<span class="maintainer">Airbnb</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>Used to render vector animations in the App.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Timber<span class="maintainer">Jake Wharton</span></span><span class="chip">Apache 2.0</span></summary>
+            <div class="lib-body">
+                <p>Logging utility used during development and diagnostics.</p>
+                <p>Full text: <a href="https://www.apache.org/licenses/LICENSE-2.0">apache.org/licenses/LICENSE-2.0</a></p>
+            </div>
+        </details></li>
+
+        <li><details class="lib-item">
+            <summary><span class="lib-name">Google Mobile Ads SDK<span class="maintainer">Google</span></span><span class="chip">Proprietary</span></summary>
+            <div class="lib-body">
+                <p>Used to display advertisements. This SDK is not open source; it is distributed under Google's own SDK terms and is listed here for disclosure only.</p>
+                <p>Terms: <a href="https://developers.google.com/admob/android/terms">developers.google.com/admob/android/terms</a></p>
+            </div>
+        </details></li>
+    </ul>
+
+    <h2>Native Media Engine</h2>
+    <p>ZPlayer's video and audio decoding is powered by an embedded build of <strong>FFmpeg</strong>.</p>
+    <ul class="lib-list">
+        <li><details class="lib-item">
+            <summary><span class="lib-name">FFmpeg<span class="maintainer">FFmpeg team</span></span><span class="chip">LGPL-2.1+</span></summary>
+            <div class="lib-body">
+                <p>Provides audio/video decoding, encoding, and container/format support.</p>
+                <p>Licensed under the GNU Lesser General Public License v2.1 (or later). Some optional components are GPL-licensed and are not enabled in this build.</p>
+                <p>Full text: <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">gnu.org/licenses/old-licenses/lgpl-2.1.html</a></p>
+            </div>
+        </details></li>
+    </ul>
+
+    <h2>Source Availability</h2>
+    <p>For libraries licensed under the LGPL or GPL, the corresponding source code (or a link to it) is available on request, and unmodified upstream source is publicly available from each project's own website linked above.</p>
+
+    <h2>Corrections</h2>
+    <p>If you believe an attribution or license on this page is incomplete or incorrect, please contact:<br>
+        <a href="mailto:mrtechcoder@gmail.com">mrtechcoder@gmail.com</a></p>
+
+    <footer>&copy; 2026 MR Dev. All rights reserved.</footer>
+</main>
+<script>
+    (function () {
+        function Accordion(el) {
+            this.el = el;
+            this.summary = el.querySelector("summary");
+            this.content = el.querySelector(".lib-body");
+            this.animation = null;
+            this.isClosing = false;
+            this.isExpanding = false;
+            // `.lib-item`'s own padding/border live on `el` itself, so the natural
+            // collapsed/expanded height is taller than summary/content offsetHeight
+            // alone by this much — without it, the end-of-animation height snaps.
+            var elStyle = getComputedStyle(this.el);
+            var contentStyle = getComputedStyle(this.content);
+            this.boxExtra = parseFloat(elStyle.paddingTop) + parseFloat(elStyle.paddingBottom) +
+                parseFloat(elStyle.borderTopWidth) + parseFloat(elStyle.borderBottomWidth);
+            this.contentMarginTop = parseFloat(contentStyle.marginTop) || 0;
+            this.summary.addEventListener("click", this.onClick.bind(this));
+        }
+
+        Accordion.prototype.onClick = function (event) {
+            event.preventDefault();
+            this.el.style.overflow = "hidden";
+            if (this.isClosing || !this.el.open) {
+                this.open();
+            } else if (this.isExpanding || this.el.open) {
+                this.shrink();
+            }
+        };
+
+        Accordion.prototype.shrink = function () {
+            this.isClosing = true;
+            var startHeight = this.el.offsetHeight + "px";
+            var endHeight = (this.summary.offsetHeight + this.boxExtra) + "px";
+            if (this.animation) this.animation.cancel();
+            this.animation = this.el.animate(
+                { height: [startHeight, endHeight] },
+                { duration: 220, easing: "ease-out", fill: "forwards" }
+            );
+            this.animation.onfinish = this.onFinish.bind(this, false);
+            this.animation.oncancel = function () { this.isClosing = false; }.bind(this);
+        };
+
+        Accordion.prototype.open = function () {
+            this.el.style.height = this.el.offsetHeight + "px";
+            this.el.open = true;
+            requestAnimationFrame(this.expand.bind(this));
+        };
+
+        Accordion.prototype.expand = function () {
+            this.isExpanding = true;
+            var startHeight = this.el.offsetHeight + "px";
+            var endHeight = (this.summary.offsetHeight + this.contentMarginTop + this.content.offsetHeight + this.boxExtra) + "px";
+            if (this.animation) this.animation.cancel();
+            this.animation = this.el.animate(
+                { height: [startHeight, endHeight] },
+                { duration: 220, easing: "ease-out", fill: "forwards" }
+            );
+            this.animation.onfinish = this.onFinish.bind(this, true);
+            this.animation.oncancel = function () { this.isExpanding = false; }.bind(this);
+        };
+
+        Accordion.prototype.onFinish = function (open) {
+            var finishedAnimation = this.animation;
+            this.el.open = open;
+            this.animation = null;
+            this.isClosing = false;
+            this.isExpanding = false;
+            this.el.style.height = "";
+            this.el.style.overflow = "";
+            // Release the fill:"forwards" hold only after `open` and the inline
+            // styles above are already correct, so there's no gap for the browser
+            // to repaint the pre-animation height before the real state applies.
+            if (finishedAnimation) finishedAnimation.cancel();
+        };
+
+        var supportsAnimate = typeof Element !== "undefined" && typeof Element.prototype.animate === "function";
+        if (supportsAnimate) {
+            document.querySelectorAll(".lib-item").forEach(function (el) {
+                new Accordion(el);
+            });
+        }
+    })();
+</script>
+</body>
+</html>
