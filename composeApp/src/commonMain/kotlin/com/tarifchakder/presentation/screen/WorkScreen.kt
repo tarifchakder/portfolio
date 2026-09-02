@@ -1,8 +1,9 @@
 package com.tarifchakder.presentation.screen
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,22 +16,24 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
+import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,8 +44,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
@@ -52,16 +55,29 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.tarifchakder.data.GitHubApi
 import com.tarifchakder.data.GitHubRepo
+import com.tarifchakder.presentation.component.AutoFitGrid
+import com.tarifchakder.presentation.component.GlassCard
+import com.tarifchakder.presentation.component.SectionPanel
+import com.tarifchakder.theme.LocalGlass
+import com.tarifchakder.theme.glassFill
+import com.tarifchakder.theme.glassStroke
 import com.tarifchakder.util.noRippleClickable
-import com.tarifchakder.util.softShadow
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import portfolio.composeapp.generated.resources.Res
-import portfolio.composeapp.generated.resources.google_play
+import portfolio.composeapp.generated.resources.googleplay
 import portfolio.composeapp.generated.resources.noto_sans_bengali
+import portfolio.composeapp.generated.resources.work_github_error
+import portfolio.composeapp.generated.resources.work_no_repos
+import portfolio.composeapp.generated.resources.work_repo_fallback_subtitle
+import portfolio.composeapp.generated.resources.work_subtitle
+import portfolio.composeapp.generated.resources.work_tab_github
+import portfolio.composeapp.generated.resources.work_tab_google_play
+import portfolio.composeapp.generated.resources.work_title
 
 private const val GITHUB_USERNAME = "tarifchakder"
-private const val GOOGLE_PLAY_URL = "https://play.google.com/store/apps/dev?id=6362563028488118131"
 
 /**
  * Bundled Noto Sans Bengali as an explicit fallback: Bengali titles must not rely on the
@@ -97,7 +113,7 @@ private val GOOGLE_PLAY_APPS = listOf(
 )
 
 private sealed interface TabIcon {
-    data class Vector(val icon: ImageVector) : TabIcon
+    data class Vector(val icon: androidx.compose.ui.graphics.vector.ImageVector) : TabIcon
     object GooglePlayLogo : TabIcon
 }
 
@@ -112,23 +128,30 @@ private fun TabIconView(icon: TabIcon, tint: Color, size: Dp) {
         )
 
         TabIcon.GooglePlayLogo -> Image(
-            painter = painterResource(Res.drawable.google_play),
+            painter = painterResource(Res.drawable.googleplay),
             contentDescription = null,
             modifier = Modifier.size(size).clip(RoundedCornerShape(4.dp))
         )
     }
 }
 
-private enum class WorkTab(val label: String, val icon: TabIcon) {
-    GooglePlay("Google Play", TabIcon.GooglePlayLogo),
-    GitHub("GitHub Projects", TabIcon.Vector(Icons.Rounded.Code))
+// Declaration order drives both the tab bar and the sliding indicator, so GitHub leading here
+// is what puts it first on screen.
+private enum class WorkTab(val labelRes: StringResource, val icon: TabIcon) {
+    GitHub(Res.string.work_tab_github, TabIcon.Vector(Icons.Rounded.Code)),
+    GooglePlay(Res.string.work_tab_google_play, TabIcon.GooglePlayLogo)
 }
 
 @Composable
 fun WorkScreen() {
-    var selectedTab by remember { mutableStateOf(WorkTab.GooglePlay) }
+    var selectedTab by remember { mutableStateOf(WorkTab.GitHub) }
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    SectionPanel(
+        title = stringResource(Res.string.work_title),
+        icon = Icons.Rounded.GridView,
+        subtitle = stringResource(Res.string.work_subtitle),
+        modifier = Modifier.fillMaxWidth()
+    ) {
         WorkTabBar(selectedTab = selectedTab, onSelect = { selectedTab = it })
 
         Box(modifier = Modifier.padding(top = 20.dp)) {
@@ -140,80 +163,106 @@ fun WorkScreen() {
     }
 }
 
+private val TabItemWidth = 132.dp
+private val TabBarHeight = 46.dp
+
+/** Segmented glass control with a sliding accent indicator, mirroring the main nav's behaviour. */
 @Composable
 private fun WorkTabBar(selectedTab: WorkTab, onSelect: (WorkTab) -> Unit) {
-    Row(
+    val g = LocalGlass.current
+    val shape = RoundedCornerShape(999.dp)
+    val tabs = WorkTab.entries
+
+    Box(
         modifier = Modifier
-            .softShadow(RoundedCornerShape(999.dp), elevation = 6.dp, alpha = 0.16f)
-            .clip(RoundedCornerShape(999.dp))
-            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
-            .padding(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+            .height(TabBarHeight)
+            .width(TabItemWidth * tabs.size)
+            .clip(shape)
+            .glassFill(shape, g)
+            .glassStroke(shape, g)
+            .padding(4.dp)
     ) {
-        WorkTab.entries.forEach { tab ->
-            WorkTabItem(
-                tab = tab,
-                selected = selectedTab == tab,
-                onClick = { onSelect(tab) }
+        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+            val itemWidth = maxWidth / tabs.size
+            val selectedIndex = tabs.indexOf(selectedTab).coerceAtLeast(0)
+
+            val indicatorOffset by animateDpAsState(
+                targetValue = itemWidth * selectedIndex,
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioLowBouncy,
+                    stiffness = Spring.StiffnessMediumLow
+                ),
+                label = "workTabIndicator"
             )
+
+            Box(
+                modifier = Modifier
+                    .offset(x = indicatorOffset)
+                    .width(itemWidth)
+                    .fillMaxHeight()
+                    .clip(shape)
+                    .background(g.accentGradient)
+            )
+
+            Row(modifier = Modifier.fillMaxSize()) {
+                tabs.forEach { tab ->
+                    WorkTabItem(
+                        tab = tab,
+                        selected = tab == selectedTab,
+                        onClick = { onSelect(tab) },
+                        modifier = Modifier.width(itemWidth).fillMaxHeight()
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun WorkTabItem(tab: WorkTab, selected: Boolean, onClick: () -> Unit) {
+private fun WorkTabItem(
+    tab: WorkTab,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val g = LocalGlass.current
     val interactionSource = remember { MutableInteractionSource() }
     val hovered by interactionSource.collectIsHoveredAsState()
 
-    val backgroundAlpha by animateFloatAsState(
-        targetValue = when {
-            selected -> 1f
-            hovered -> 0.12f
-            else -> 0f
-        },
-        animationSpec = tween(220)
-    )
-    val backgroundColor = MaterialTheme.colorScheme.primary.copy(alpha = backgroundAlpha)
-
     val contentColor by animateColorAsState(
-        targetValue = if (selected) {
-            MaterialTheme.colorScheme.onPrimary
-        } else {
-            MaterialTheme.colorScheme.onSurface
+        targetValue = when {
+            selected -> MaterialTheme.colorScheme.onPrimary
+            hovered -> g.textPrimary
+            else -> g.textTertiary
         },
-        animationSpec = tween(220)
-    )
-    val contentAlpha by animateFloatAsState(
-        targetValue = if (selected) 1f else 0.7f,
-        animationSpec = tween(220)
+        animationSpec = tween(220),
+        label = "workTabColor"
     )
 
     Row(
-        modifier = Modifier
+        modifier = modifier
             .clip(RoundedCornerShape(999.dp))
-            .background(backgroundColor)
             .hoverable(interactionSource)
-            .noRippleClickable(interactionSource, onClick = onClick)
-            .padding(horizontal = 20.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+            .pointerHoverIcon(PointerIcon.Hand)
+            .noRippleClickable(interactionSource, onClick = onClick),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        TabIconView(
-            icon = tab.icon,
-            tint = contentColor.copy(alpha = contentAlpha),
-            size = 18.dp
-        )
+        TabIconView(icon = tab.icon, tint = contentColor, size = 17.dp)
         Text(
-            text = tab.label,
-            style = MaterialTheme.typography.labelLarge,
-            color = contentColor.copy(alpha = contentAlpha),
-            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium
+            text = stringResource(tab.labelRes),
+            style = MaterialTheme.typography.labelMedium.copy(
+                fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold
+            ),
+            color = contentColor,
+            maxLines = 1
         )
     }
 }
 
 @Composable
 private fun GitHubProjectsTab() {
+    val g = LocalGlass.current
     var repos by remember { mutableStateOf<List<GitHubRepo>?>(null) }
     var error by remember { mutableStateOf(false) }
 
@@ -228,27 +277,27 @@ private fun GitHubProjectsTab() {
     }
 
     when {
-        error -> Text(
-            text = "Couldn't load GitHub projects right now.",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-        )
+        error -> StatusText(stringResource(Res.string.work_github_error))
 
-        repos == null -> Box(modifier = Modifier.fillMaxWidth().padding(24.dp), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
+        repos == null -> Box(
+            modifier = Modifier.fillMaxWidth().padding(32.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator(color = g.accent, strokeWidth = 3.dp)
         }
 
-        repos!!.isEmpty() -> Text(
-            text = "No public repositories found.",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-        )
+        repos!!.isEmpty() -> StatusText(stringResource(Res.string.work_no_repos))
 
-        else -> ProjectGrid(items = repos!!) { repo ->
+        // No thumbnailUrl here: GitHub's opengraph image is a full mini repo-card in its own
+        // right (name, description, contributor/issue/star/fork counts, language bar) - it isn't
+        // a logo. Layering our own title/subtitle over it just repeated the same text twice.
+        // The icon-tile placeholder ProjectCard already falls back to is what Google Play uses
+        // too, so both tabs read as one consistent grid.
+        else -> AutoFitGrid(items = repos!!) { repo ->
             ProjectCard(
                 title = repo.name,
-                subtitle = repo.description ?: repo.language ?: "GitHub repository",
-                thumbnailUrl = GitHubApi.thumbnailUrl(repo.owner?.login ?: GITHUB_USERNAME, repo.name),
+                subtitle = repo.description ?: repo.language ?: stringResource(Res.string.work_repo_fallback_subtitle),
+                thumbnailUrl = null,
                 starCount = if (repo.stargazersCount > 0) repo.stargazersCount else null,
                 icon = TabIcon.Vector(Icons.Rounded.Code),
                 url = repo.htmlUrl
@@ -259,7 +308,7 @@ private fun GitHubProjectsTab() {
 
 @Composable
 private fun GooglePlayTab() {
-    ProjectGrid(items = GOOGLE_PLAY_APPS) { app ->
+    AutoFitGrid(items = GOOGLE_PLAY_APPS) { app ->
         ProjectCard(
             title = app.name,
             thumbnailUrl = app.iconUrl,
@@ -271,40 +320,13 @@ private fun GooglePlayTab() {
     }
 }
 
-/**
- * Auto-fit grid (like CSS grid-template-columns: repeat(auto-fit, minmax(minCellWidth, 1fr))):
- * column count is derived from the available width, and each card stretches evenly to fill it.
- */
 @Composable
-private fun <T> ProjectGrid(
-    items: List<T>,
-    minCellWidth: androidx.compose.ui.unit.Dp = 240.dp,
-    spacing: androidx.compose.ui.unit.Dp = 16.dp,
-    content: @Composable (T) -> Unit
-) {
-    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-        val columns = ((maxWidth + spacing) / (minCellWidth + spacing))
-            .toInt()
-            .coerceAtLeast(1)
-
-        Column(verticalArrangement = Arrangement.spacedBy(spacing)) {
-            items.chunked(columns).forEach { rowItems ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(spacing)
-                ) {
-                    rowItems.forEach { item ->
-                        Box(modifier = Modifier.weight(1f)) {
-                            content(item)
-                        }
-                    }
-                    repeat(columns - rowItems.size) {
-                        Box(modifier = Modifier.weight(1f))
-                    }
-                }
-            }
-        }
-    }
+private fun StatusText(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.bodyMedium,
+        color = LocalGlass.current.textTertiary
+    )
 }
 
 @Composable
@@ -317,114 +339,100 @@ private fun ProjectCard(
     url: String,
     thumbnailAspectRatio: Float = 16f / 9f
 ) {
+    val g = LocalGlass.current
     val uriHandler = LocalUriHandler.current
-    val interactionSource = remember { MutableInteractionSource() }
-    val hovered by interactionSource.collectIsHoveredAsState()
 
-    val scale by animateFloatAsState(
-        targetValue = if (hovered) 1.03f else 1f,
-        animationSpec = tween(200)
-    )
-    val shadowElevation by animateDpAsState(
-        targetValue = if (hovered) 14.dp else 6.dp,
-        animationSpec = tween(200)
-    )
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .graphicsLayer(scaleX = scale, scaleY = scale)
-            .softShadow(MaterialTheme.shapes.large, elevation = shadowElevation)
-            .hoverable(interactionSource)
-            .noRippleClickable(interactionSource, onClick = { uriHandler.openUri(url) }),
+    GlassCard(
+        modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        onClick = { uriHandler.openUri(url) }
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(thumbnailAspectRatio)
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f))
-        ) {
-            var thumbnailFailed by remember(thumbnailUrl) { mutableStateOf(false) }
-
-            if (thumbnailUrl != null && !thumbnailFailed) {
-                AsyncImage(
-                    model = thumbnailUrl,
-                    contentDescription = title,
-                    contentScale = ContentScale.Crop,
-                    onError = { thumbnailFailed = true },
-                    modifier = Modifier.fillMaxSize()
-                )
-            } else {
-                Box(modifier = Modifier.align(Alignment.Center)) {
-                    TabIconView(icon = icon, tint = MaterialTheme.colorScheme.primary, size = 40.dp)
-                }
-            }
-
-            if (starCount != null) {
-                Row(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .align(Alignment.TopEnd)
-                        .clip(RoundedCornerShape(999.dp))
-                        .background(MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp).copy(alpha = 0.9f))
-                        .padding(horizontal = 8.dp, vertical = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.Star,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(12.dp)
-                    )
-                    Text(
-                        text = starCount.toString(),
-                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
-        }
-
-        Column(
-            modifier = Modifier.fillMaxWidth().padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(thumbnailAspectRatio)
+                    .background(g.accentSoft)
             ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleSmall.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = fallbackTextFontFamily()
-                    ),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 1,
-                    modifier = Modifier.weight(1f, fill = false)
-                )
-                Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-                    modifier = Modifier.size(14.dp)
-                )
+                var thumbnailFailed by remember(thumbnailUrl) { mutableStateOf(false) }
+
+                // The icon sits underneath as a permanent placeholder, so the tile is never an
+                // empty rectangle while the image loads - or if it never arrives at all.
+                Box(modifier = Modifier.align(Alignment.Center)) {
+                    TabIconView(icon = icon, tint = g.accent, size = 40.dp)
+                }
+
+                if (thumbnailUrl != null && !thumbnailFailed) {
+                    AsyncImage(
+                        model = thumbnailUrl,
+                        contentDescription = title,
+                        contentScale = ContentScale.Crop,
+                        onError = { thumbnailFailed = true },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+
+                if (starCount != null) {
+                    Row(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .align(Alignment.TopEnd)
+                            .clip(RoundedCornerShape(999.dp))
+                            .glassFill(RoundedCornerShape(999.dp), g, raised = true)
+                            .glassStroke(RoundedCornerShape(999.dp), g)
+                            .padding(horizontal = 9.dp, vertical = 5.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Star,
+                            contentDescription = null,
+                            tint = g.accent,
+                            modifier = Modifier.size(12.dp)
+                        )
+                        Text(
+                            text = starCount.toString(),
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                            color = g.textPrimary
+                        )
+                    }
+                }
             }
-            if (subtitle != null) {
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f),
-                    minLines = 2,
-                    maxLines = 2
-                )
+
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.labelLarge.copy(
+                            fontFamily = fallbackTextFontFamily()
+                        ),
+                        color = g.textPrimary,
+                        maxLines = 1,
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
+                        contentDescription = null,
+                        tint = g.textTertiary,
+                        modifier = Modifier.size(15.dp)
+                    )
+                }
+                if (subtitle != null) {
+                    Text(
+                        text = subtitle,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = g.textTertiary,
+                        minLines = 2,
+                        maxLines = 2
+                    )
+                }
             }
         }
     }
