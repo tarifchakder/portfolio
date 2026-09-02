@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GitHubRepo(
-    val name: String,
-    @SerialName("html_url") val htmlUrl: String,
+    val name: String = "",
+    @SerialName("html_url") val htmlUrl: String = "",
     val description: String? = null,
     @SerialName("stargazers_count") val stargazersCount: Int = 0,
     val language: String? = null,
@@ -16,5 +16,5 @@ data class GitHubRepo(
 
 @Serializable
 data class GitHubOwner(
-    val login: String
+    val login: String = ""
 )

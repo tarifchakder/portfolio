@@ -105,7 +105,7 @@ Configured desktop formats:
 - The Android application ID is `com.tarifchakder`
 - The desktop main class is `com.tarifchakder.MainKt`
 - Local machine files such as `local.properties`, Xcode user data, and Gradle caches are intentionally ignored
-- The resume download action in the app currently points to a placeholder URL and should be replaced with the real hosted CV link
+- The resume download action in the app points to `https://raw.githubusercontent.com/tarifchakder/portfolio/main/composeApp/src/commonMain/composeResources/files/Md_Tarif_Chakder_Resume.pdf` (bundled in `composeApp/src/commonMain/composeResources/files/Md_Tarif_Chakder_Resume.pdf` and `composeApp/src/webMain/resources/Md_Tarif_Chakder_Resume.pdf`)
 
 ## License
 

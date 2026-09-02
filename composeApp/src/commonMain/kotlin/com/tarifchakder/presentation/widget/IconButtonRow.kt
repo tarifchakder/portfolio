@@ -4,14 +4,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
-import com.tarifchakder.util.noRippleClickable
+import com.tarifchakder.presentation.component.GlassIconButton
+import com.tarifchakder.theme.LocalGlass
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.github
@@ -20,53 +20,45 @@ import portfolio.composeapp.generated.resources.instagram
 import portfolio.composeapp.generated.resources.linkedin
 import portfolio.composeapp.generated.resources.whatsapp
 
+/** Social links as a row of small glass buttons that lift on hover. */
 @Composable
-fun IconButtonRow(
+fun SocialLinkRow(
     modifier: Modifier = Modifier,
     onLinkedinClick: () -> Unit = {},
-    onGithubLinkedIn: () -> Unit = {},
+    onGithubClick: () -> Unit = {},
     onGooglePlayClick: () -> Unit = {},
     onInstagramClick: () -> Unit = {},
     onWhatsappClick: () -> Unit = {},
 ) {
+    val g = LocalGlass.current
+
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(20.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            painter = painterResource(Res.drawable.linkedin),
-            contentDescription = "Linkedin",
-            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
-                .noRippleClickable(onClick = onLinkedinClick)
-        )
+        SocialButton(Res.drawable.linkedin, "LinkedIn", onLinkedinClick)
+        // The GitHub mark ships as flat black artwork, so it has to follow the ink colour.
+        SocialButton(Res.drawable.github, "GitHub", onGithubClick, tint = ColorFilter.tint(g.textPrimary))
+        SocialButton(Res.drawable.googleplay, "Google Play", onGooglePlayClick)
+        SocialButton(Res.drawable.instagram, "Instagram", onInstagramClick)
+        SocialButton(Res.drawable.whatsapp, "WhatsApp", onWhatsappClick)
+    }
+}
 
+@Composable
+private fun SocialButton(
+    resource: DrawableResource,
+    contentDescription: String,
+    onClick: () -> Unit,
+    tint: ColorFilter? = null
+) {
+    GlassIconButton(onClick = onClick, size = 44.dp) {
         Image(
-            painter = painterResource(Res.drawable.github),
-            contentDescription = "Github",
-            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
-                .noRippleClickable(onClick = onGithubLinkedIn),
-            colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onSurface)
-        )
-
-        Image(
-            painter = painterResource(Res.drawable.googleplay),
-            contentDescription = "GooglePlay",
-            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
-                .noRippleClickable(onClick = onGooglePlayClick)
-        )
-
-        Image(
-            painter = painterResource(Res.drawable.instagram),
-            contentDescription = "Instagram",
-            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
-                .noRippleClickable(onClick = onInstagramClick)
-        )
-
-        Image(
-            painter = painterResource(Res.drawable.whatsapp),
-            contentDescription = "WhatsApp",
-            modifier = Modifier.size(25.dp).pointerHoverIcon(PointerIcon.Hand)
-                .noRippleClickable(onClick = onWhatsappClick)
+            painter = painterResource(resource),
+            contentDescription = contentDescription,
+            modifier = Modifier.size(21.dp),
+            colorFilter = tint
         )
     }
 }

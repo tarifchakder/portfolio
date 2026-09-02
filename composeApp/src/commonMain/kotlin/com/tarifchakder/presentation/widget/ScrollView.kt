@@ -1,5 +1,6 @@
 package com.tarifchakder.presentation.widget
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -12,11 +13,11 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ScrollView(
     modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState(),
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     content: @Composable (ColumnScope.() -> Unit)
 ) {
-    val scrollState = rememberScrollState()
     Column(
         modifier = modifier.verticalScroll(state = scrollState, enabled = true),
         verticalArrangement = verticalArrangement,

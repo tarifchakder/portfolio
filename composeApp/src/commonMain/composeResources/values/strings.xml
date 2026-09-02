@@ -11,4 +11,51 @@ Beyond the technical domain, I approach engineering with a mindset centered on d
 Rather than focusing solely on milestones, I value the consistent practice of improvement: refining processes, optimizing systems, and solving problems through objective reasoning and structured thinking.
 
 I believe meaningful progress comes from focused work, deliberate practice, and precision in execution, maintaining a balanced perspective while continuously improving both the craft and the systems behind it.</string>
+
+    <!-- Navigation -->
+    <string name="nav_about">About</string>
+    <string name="nav_resume">Resume</string>
+    <string name="nav_work">Work</string>
+
+    <!-- About screen -->
+    <string name="about_me_title">About Me</string>
+    <string name="about_what_i_do_title">What I Do</string>
+    <string name="about_location_chip">Based in the United Arab Emirates</string>
+    <string name="about_hero_greeting">Hello, I'm Tarif</string>
+    <string name="about_hero_subtitle">Senior Android &amp; KMP Engineer</string>
+    <string name="about_hero_tagline">I build secure, high-performance mobile products for banking and fintech - shipping Kotlin and Kotlin Multiplatform apps that hold up in production.</string>
+    <string name="about_get_in_touch">Get in touch</string>
+    <string name="about_view_github">View GitHub</string>
+
+    <!-- Resume screen -->
+    <string name="resume_tagline">A snapshot of my experience, education, and core skills - download the full CV for the complete picture.</string>
+    <string name="resume_title">Resume</string>
+    <string name="resume_years_chip">7+ years</string>
+    <string name="resume_download_cv">Download CV</string>
+    <string name="resume_experience_title">Experience</string>
+    <string name="resume_education_title">Education</string>
+    <string name="resume_skills_title">Skills</string>
+
+    <!-- Work screen -->
+    <string name="work_tab_github">GitHub</string>
+    <string name="work_tab_google_play">Google Play</string>
+    <string name="work_title">Work</string>
+    <string name="work_subtitle">Published apps and open-source projects</string>
+    <string name="work_github_error">Couldn't load GitHub projects right now.</string>
+    <string name="work_no_repos">No public repositories found.</string>
+    <string name="work_repo_fallback_subtitle">GitHub repository</string>
+
+    <!-- Profile panel: contact list -->
+    <string name="contact_email_label">EMAIL</string>
+    <string name="contact_mobile_uae_label">MOBILE (UAE)</string>
+    <string name="contact_mobile_india_label">MOBILE (INDIA)</string>
+    <string name="contact_location_label">LOCATION</string>
+    <string name="profile_contact_details">Contact details</string>
+    <string name="profile_hide_details">Hide details</string>
+
+    <!-- Profile panel: WhatsApp picker sheet -->
+    <string name="whatsapp_sheet_title">Choose WhatsApp Number</string>
+    <string name="whatsapp_sheet_subtitle">Select where you want to start the chat</string>
+    <string name="whatsapp_uae_option">UAE Number</string>
+    <string name="whatsapp_india_option">India Number</string>
 </resources>
